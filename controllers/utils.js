@@ -86,8 +86,6 @@ function issueJWT(user) {
 function authMiddleware(req, res, next) {
 
   const token = req.cookies.token
-
-  console.log(token)
   
   if (!token) {
     return res.status(401).json({ message: 'You must log in before visiting this route' });

@@ -24,7 +24,7 @@ const handleRegister = async (req, res) => {
       timeSlots
     } = req.body;
 
-    const user = await User.findById(id);
+    const user = await User.findById(req.userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -42,7 +42,7 @@ const handleRegister = async (req, res) => {
     if (!therapist) {
       // Create new therapist
       therapist = new Therapist({
-        userId: id,
+        userId: req.userId,
         firstName,
         lastName,
         email,

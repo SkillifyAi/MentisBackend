@@ -8,7 +8,7 @@ const {authMiddleware, getPayload} = utils
 const router = express.Router()
 
 
-router.post("/register", handleRegister)
+router.post("/register", authMiddleware, getPayload, handleRegister)
 
 router.post("/plan", authMiddleware, getPayload, handlePlan)
 
